@@ -1,2 +1,2 @@
-Curso-angularjs-FS-2014
+Curso-angularjs-FS
 =======================
