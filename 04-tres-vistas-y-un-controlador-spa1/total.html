@@ -1,0 +1,38 @@
+<!-- Cada sección tendrá su propia plantilla -->
+<!-- No se especifíca el controlador, que será asignado por el enrutador -->
+<section name="total">
+<!-- Pero se supone un viweModel llamado caja-->
+    <h1>{{ caja.titulo }}</h1>
+    <p class="lead">Comprueba de dónde viene y a dónde va tu dinero.</p>
+    <div class="row-fluid">
+        <div class="row placeholders">
+            <div class="col-xs-8 col-sm-4 placeholder">
+                <h1>
+                    <span class="label label-success">
+                        {{ caja.total.ingresos | number:2 }} €
+                    </span>
+                </h1>
+                <h4>Total ingresos</h4>
+                <span class="text-muted">Acumulado</span>
+            </div>
+            <div class="col-xs-8 col-sm-4 placeholder">
+                <h1>
+                    <span class="label label-danger">
+                        {{ caja.total.gastos | number:2 }} €
+                    </span>
+                </h1>
+                <h4>Total gastos</h4>
+                <span class="text-muted">Acumulado</span>
+            </div>
+            <div class="col-xs-8 col-sm-4 placeholder">
+                <h1>
+                    <span class="label " ng-class="{'label-success': caja.balance()>=0 , 'label-danger' : caja.balance()<0}">
+                        {{ caja.balance() | number:2 }} €
+                    </span>
+                </h1>
+                <h4>Balance</h4>
+                <span class="text-muted">Ingresos-Gastos</span>
+            </div>
+        </div>
+    </div>
+</section>
