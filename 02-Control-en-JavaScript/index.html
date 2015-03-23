@@ -1,0 +1,153 @@
+<html lang="es" ng-app="controlCajaApp">
+<!-- En este ejercicio extraemos la lógica del html llevándola a JS -->
+<!-- Esta es una práctica muy poco recomendable y que sólo se usa a modo de introducción de las capacidades declarativas de AngularJS -->
+
+<head>
+    <title>Control de Caja</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta lang="es" />
+    <meta name="description" content="Simple Interés en AngularJS por Alberto Basalo" />
+    <meta name="author" content="Alberto Basalo @ Ágora Binaria" />
+    <meta name="application-name" content="ControlAngularJS" />
+    <meta name="Keywords" content="AngularJS, ejemplo, tutorial, curso" />
+    <link rel="author" href="https://plus.google.com/+AlbertoBasalo71" />
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<!--La directiva ng-controller la usaremos siempre con la sintaxis 'as'-->
+
+<body ng-controller="CajaCtrl as caja">
+    <div class="container text-center">
+        <section name="total">
+            <h1>{{ caja.titulo }}</h1>
+            <p class="lead">Comprueba de dónde viene y a dónde va tu dinero.</p>
+            <div class="row-fluid">
+                <div class="row placeholders">
+                    <div class="col-xs-8 col-sm-4 placeholder">
+                        <h1>
+                            <span class="label label-success">
+                                {{ caja.total.ingresos | number:2 }} €
+                            </span>
+                        </h1>
+                        <h4>Total ingresos</h4>
+                        <span class="text-muted">Acumulado</span>
+                    </div>
+                    <div class="col-xs-8 col-sm-4 placeholder">
+                        <h1>
+                            <span class="label label-danger">
+                                {{ caja.total.gastos | number:2 }} €
+                            </span>
+                        </h1>
+                        <h4>Total gastos</h4>
+                        <span class="text-muted">Acumulado</span>
+                    </div>
+                    <div class="col-xs-8 col-sm-4 placeholder">
+                        <h1>
+                            <span class="label " ng-class="{'label-success': caja.balance()>=0 , 'label-danger' : caja.balance()<0}">
+                                <!-- Ejemplo de uso de funciones dentro de expresiones-->
+                                {{ caja.balance() | number:2 }} €
+                            </span>
+                        </h1>
+                        <h4>Balance</h4>
+                        <span class="text-muted">Ingresos-Gastos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section name="nuevoMovimiento" class="row-fluid">
+            <form class="form-horizontal text-left">
+                <fieldset>
+                    <div id="legend">
+                        <legend class="">Introduce tus movimientos</legend>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="control-group">
+                                <label class="control-label" for="tipo">Tipo</label>
+                                <div class="controls">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success" ng-class="{'active':caja.nuevoMovimiento.esIngreso==1}" ng-click="caja.nuevoMovimiento.esIngreso=1; caja.nuevoMovimiento.esGasto=0">
+                                            <span ng-class="{'small':caja.nuevoMovimiento.esIngreso==0}">+ Ingreso</span>
+                                        </button>
+                                        <button type="button" class="btn btn-danger" ng-class="{'active':caja.nuevoMovimiento.esGasto==1}" ng-click="caja.nuevoMovimiento.esIngreso=0; caja.nuevoMovimiento.esGasto=1">
+                                            <span ng-class="{'small':caja.nuevoMovimiento.esGasto==0}">- Gasto</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="categ">Categoría</label>
+                                <div class="controls">
+                                    <select ng-show="caja.nuevoMovimiento.esIngreso" name="categoria" ng-model="caja.nuevoMovimiento.categoria" ng-options="categoria for categoria in caja.maestros.categoriasIngresos"></select>
+                                    <select ng-hide="caja.nuevoMovimiento.esIngreso" name="categoria" ng-model="caja.nuevoMovimiento.categoria" ng-options="categoria for categoria in caja.maestros.categoriasGastos"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="control-group">
+                                <label class="control-label" for="fecha">Fecha</label>
+                                <div class="controls">
+                                    <input type="date" name="fecha" placeholder="" class="input" ng-model="caja.nuevoMovimiento.fecha">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="importe">Importe</label>
+                                <div class="controls">
+                                    <input type="number" name="importe" placeholder="" class="input" ng-model="caja.nuevoMovimiento.importe">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button style="margin-top: 20px" type="button" class="btn btn-lg btn-primary" ng-click="caja.guardarMovimiento()">
+                            <span>Guardar {{ caja.tipo(caja.nuevoMovimiento) }}</span>
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+        <hr>
+        <section name="Lista">
+            <p class="lead">Estos son tus movimientos recientes.</p>
+            <br>
+            <label class="control-label" for="importe">Filtrar:</label>
+            <input type="text" name="filtro" placeholder="qué buscas?" class="input" ng-model="valorBuscado">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><a href="" ng-click="campo = 'fecha'; sentido = campo == ('fecha' && !sentido)">Fecha</a>
+                        </th>
+                        <th>Tipo</th>
+                        <th>Categoría</th>
+                        <th><a href="" ng-click="campo = 'importe'; sentido = campo == ('importe' && !sentido)">Importe</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="movimiento in caja.movimientos | filter:valorBuscado | orderBy:campo:sentido">
+                        <td class="text-left">{{movimiento.fecha | date}}</td>
+                        <td class="text-left">{{movimiento.tipo}}</td>
+                        <td class="text-left">{{movimiento.categoria}}</td>
+                        <td class="text-left" ng-class="{'text-success': movimiento.tipo=='Ingreso', 'text-danger' : movimiento.tipo=='Gasto'}">{{movimiento.importe | number:2}} €</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <footer>
+        <hr>
+        <p>Código de ejemplo creado por <a href="https://twitter.com/albertobasalo">Alberto Basalo</a> de <a href="http://agorabinaria.com">Ágora Binaria</a>
+        </p>
+        <p>Accede a más contenidos formativos en <a href="https://github.com/AcademiaBinaria">GitHub-AcademiaBinaria</a>
+        </p>
+    </footer>
+    <!-- JavaScript References -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <!-- Referencias a nuestro propio código, un fichero para el módulo principal de la aplicación, y otro para su controlador-->
+    <script src="app.js"></script>
+    <script src="cajaCtrl.js"></script>
+</body>
+
+</html>
