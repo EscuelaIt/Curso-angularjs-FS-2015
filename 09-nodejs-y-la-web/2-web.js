@@ -1,3 +1,5 @@
+// ya que tenemos un servidor http
+// lo usaremos para servir html
 (function () {
 	"use strict";
 	var http = require('http');
@@ -17,7 +19,7 @@
 		res.write("<h1>Hola</h1><p>enviado por NodeJS al navegador<p> ;-)");
 		res.write("</body>");
 		res.write("</html>");
-		// esto es un web server
+		// esto es un web server !!!
 		res.end();
 	}
 

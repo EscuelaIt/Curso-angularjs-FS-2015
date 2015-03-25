@@ -1,7 +1,7 @@
 {
   "name": "modulos",
   "version": "1.0.0",
-  "description": "modulos externos con npm",
+  "description": "módulos externos con npm",
   "author": "alberto basalo",
   "license": "ISC",
   "dependencies": {

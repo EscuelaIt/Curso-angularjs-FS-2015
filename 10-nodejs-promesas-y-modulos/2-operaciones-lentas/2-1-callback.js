@@ -1,47 +1,44 @@
 (function () {
+	// El módulo http puede usarse para responder y para emitir llamadas
 	var http = require('http');
 	var llamada = {
 		host: 'agorabinaria.com'
 	};
-	var respuesta;
 
-	console.log("Trabajo lento iniciado... "  );
+	console.log("Trabajo lento iniciado... ");
 	trabajoLento();
-	console.log("Trabajo lentoMejorado iniciado... "  );
+	console.log("Trabajo lentoMejorado iniciado... ");
 	trabajoLentoMejorado();
-	console.log("Trabajo rápido iniciado... "  );
+	console.log("Trabajo rápido iniciado... ");
 	trabajoRápido();
-	
+
+
 	// Usando callbacks anónimos
 	function trabajoLento() {
 		http.get(llamada, function (res) {
-			respuesta = res.statusCode;
-			console.log("Trabajo lento terminado: " + respuesta);
+			console.log("Trabajo lento terminado: " + res.statusCode);
 		}).on('error', function (e) {
-			respuesta = e.message;
-			console.log("Trabajo lento terminado: " + respuesta);
+			console.eror("Trabajo lento terminado: " + e.message);
 		});
 	}
 
 	function trabajoRápido() {
-		console.log("Trabajo rápido terminado :-) "  );
+		console.log("Trabajo rápido terminado :-) ");
 	}
 
-	
-	trabajoLentoMejorado();
 	// Usando nombres y funciones
 	function trabajoLentoMejorado() {
+		
 		function alRecibirDatos(res) {
-			respuesta = res.statusCode;
-			console.log("Trabajo lentoMejorado terminado: " + respuesta);
+			console.log("Trabajo lentoMejorado terminado: " + res.statusCode);
 		}
 
-		function alRecibirError(error) {
-			respuesta = error.message;
-			console.log("Trabajo lentoMejorado terminado: " + respuesta);
+		function alRecibirError(e) {
+			console.error("Trabajo lentoMejorado terminado: " + e.message);
 		}
+			// El código queda más legible si usamos funiones con nombre
 		http.get(llamada, alRecibirDatos)
 			.on('error', alRecibirError);
 	}
-	
+
 })();

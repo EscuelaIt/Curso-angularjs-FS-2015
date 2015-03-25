@@ -1,5 +1,7 @@
 (function () {
     // El controlador ahora tiene una dependencia de la factoría
+    // Las dependencias se buscan en nuestro módulo 
+    // o en cualquiera de sus dependencias
     var cajaCtrl = function (movimientosFactory) {
         var vm = this;
         
@@ -26,6 +28,7 @@
 			}
             var auxCopyMov = angular.copy(vm.nuevoMovimiento);
             auxCopyMov.tipo = vm.tipo(auxCopyMov);
+            // realmente estamos escribiendo en el array que mantiene la factoría
             vm.movimientos.push(auxCopyMov);
             vm.nuevoMovimiento.importe = 0;
         }

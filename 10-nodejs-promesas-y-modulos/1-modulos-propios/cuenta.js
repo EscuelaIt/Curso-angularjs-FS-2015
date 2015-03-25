@@ -10,6 +10,7 @@ var CuentaExportable = (function(){
 		console.log("creada cuenta para "  + this.propietario + " con " + this.saldo + "€")
     };
 
+	// una vez creada una variable, se le pueden agregar métodos y propiedades
 	Cuenta.prototype = {
 		ingresar: function(dinero){
 			this.saldo = Mates.sumar(this.saldo,dinero);
@@ -25,6 +26,6 @@ var CuentaExportable = (function(){
 })();
 
 // se exporta la variable CuentaExportable,
-// dicha variable a punta a una funión que retorna un objeto
+// dicha variable apunta a una función que retorna un objeto
 
 module.exports = CuentaExportable;

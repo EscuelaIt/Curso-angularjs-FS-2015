@@ -1,9 +1,11 @@
-
+// En NodeJS todo se ejecuta en único thread
+// Puedes llamarlo 'EL PROCESO'
 (function () {
 	"use strict";
 	process.title = "mi super aplicación";
 	imprimir();
 
+	// Puedes conocer cosas acerca del proceso en curso
 	function imprimir() {
 		console.log('----------------------------------------');
 		console.log('   DATOS DE NODE.JS PROCESS');

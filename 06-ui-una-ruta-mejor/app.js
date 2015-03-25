@@ -3,7 +3,9 @@ angular.module('controlCajaApp', ['ui.router']);
 
 // las rutas ahora se maneja con el concepto de estado
 angular.module('controlCajaApp').config(function ($stateProvider,$locationProvider) {
-	$stateProvider
+	// Las rutas pasan a ser opcionales,
+    // en la práctica sólo se usan si viene de aplicaciones externas y por cuestiones de SEO
+    $stateProvider
         .state('total', {
 			url: '/',
             controller: 'CajaCtrl as caja',
@@ -22,4 +24,6 @@ angular.module('controlCajaApp').config(function ($stateProvider,$locationProvid
         	url: '*path',    
             templateUrl: 'not-found.html'
         });
+    // realmente no existe un estado 'not found', 
+    // pero puede llegar rutas no controladas
 });

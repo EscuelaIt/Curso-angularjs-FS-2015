@@ -1,3 +1,5 @@
+// A partir de ahora empezaremos a usar NodeJs como servidor
+// La mínima configuración para ello es la siguiente
 (function () {
 	"use strict";
 	var http = require('http'),
@@ -5,6 +7,7 @@
 		path = require('path'),
 		fs = require('fs');
 
+	// Tipos básicos
 	var mimeTypes = {
 		"html": "text/html",
 		"png": "image/png",
@@ -12,6 +15,7 @@
 		"css": "text/css"
 	};
 
+	// Escuchar en el puerto 3000
 	http.createServer(staticServer).listen(3000);
 
 	function staticServer(req, res) {
@@ -20,6 +24,7 @@
 		fileServer(res, pathname);
 	}
 	
+	// Buscar el segmento de url en el disco
 	function fileServer(res, pathname) {
 		// obtener la ruta en disco a partir de la ruta web
 		if(pathname==="/") pathname="index.html";
@@ -29,10 +34,9 @@
 			extension = "html";
 			filename += "." + extension;
 		}
-		console.log('busco en el disco... ' + filename);
+		
 		fs.exists(filename, function (exists) {
 			if (!exists) {
-				console.log("no encuentro: " + filename);
 				notFound(res);
 			} else {
 				var mimeType = mimeTypes[extension];

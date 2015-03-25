@@ -17,8 +17,10 @@
         <div class="navbar-inner">
             <div class="container">
                 <ul class="nav navbar-nav">
-					<!-- Los enlaces se formulan como estado, con ui-sref-->
-                    <li ng-class="{ active: menu.isActive('total') }">
+					<li ng-class="{ active: menu.isActive('total') }">
+                        <!-- Los enlaces se formulan como estado, con ui-sref -->
+                        <!-- Estos estados generan rutas, según la configuración -->
+                        <!-- Pero internamente siempre trabajamos con estados -->
                         <a ui-sref="total">Totales</a>
                     </li>
                     <li ng-class="{ active: menu.isActive('nuevo') }">
@@ -31,18 +33,18 @@
             </div>
         </div>
     </nav>
-	<!--    La directiva de ui-router es... ui-view-->
+	<!-- La directiva de ui-router es... ui-view-->
     <div class="container text-center" style="padding-top:50px;" ui-view >
-
+    <!-- En este caso podríamos tener varias vista a la vez-->
+    <!-- Incluso estados anidados unos dentro de otros-->
     </div>
     <!-- JavaScript References -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-	<!--    En lugar del enrutador de angularJs, usaremos uno de terceros, llamado ui-router-->
-   <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+	<!-- En lugar del enrutador de AngularJS, usaremos uno de terceros, llamado ui-router-->
+    <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
     <script src="app.js"></script>
     <script src="menuCtrl.js"></script>
     <script src="cajaCtrl.js"></script>
-    <!-- Referencia a la factoría recién creada -->
     <script src="movimientosFactory.js"></script>
 </body>
 </html>

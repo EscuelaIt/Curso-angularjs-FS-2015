@@ -1,3 +1,4 @@
+// Se ejecutan las instucciones del fichero secuencialmente... o no.
 // variables
 var nombre = 'Alberto';
 var edad = 43;

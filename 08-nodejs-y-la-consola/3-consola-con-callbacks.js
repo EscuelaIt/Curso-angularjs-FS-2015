@@ -1,8 +1,10 @@
  //Versión más elaborada con callbacks
 (function () {
 	"use strict";
+	// ahora vmos a escribir también en otro buffer
 	var stdin = process.stdin,
-		stdout = process.stdout;
+		stdout = process.stdout; // buffer de salida hacia la conola
+
 	var persona = {
 		nombre: 'Anónimo',
 		edad: 0

@@ -1,3 +1,5 @@
+// El controlador permanece común a las tres vistas
+// En principio esto facilita la programación
 (function () {
     var cajaCtrl = function () {
         var vm = this;

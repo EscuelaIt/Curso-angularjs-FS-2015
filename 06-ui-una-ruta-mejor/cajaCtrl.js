@@ -1,5 +1,5 @@
 (function () {
-    // El controlador ahora tiene una dependencia de la factoría
+
     var cajaCtrl = function (movimientosFactory) {
         var vm = this;
         
@@ -14,7 +14,7 @@
             importe: 0,
             fecha: new Date()
         };
-        // La parte de datos que debe compartir la delega sobre la factoría
+
         vm.movimientos = movimientosFactory.getMovimientos();
         vm.total = movimientosFactory.getTotal();
 

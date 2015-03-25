@@ -1,3 +1,10 @@
+<!--
+Para evitar el problema de los controladores instanciables
+Debemos evitar almacenar datos en ellos
+Esos datos normalmente venfrán de un API o del almacenamiento local
+Pero si los queremos mantener en memoria, entnoces han de venir de una factoria
+Las factorias y los servicios son singleton
+-->
 <html lang="es" ng-app="controlCajaApp">
 <head>
     <title>Control de Caja</title>
@@ -39,7 +46,7 @@
     <script src="app.js"></script>
     <script src="menuCtrl.js"></script>
     <script src="cajaCtrl.js"></script>
-    <!-- Referencia a la factoría recién creada -->
+    <!-- Referencia a la factoría recién creada, como siempre un fichero por componente -->
     <script src="movimientosFactory.js"></script>
 </body>
 </html>

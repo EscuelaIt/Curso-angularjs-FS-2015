@@ -1,5 +1,9 @@
+// un uso muy común de nodeJS
+// es disponer de un servidor
+// que publique el contenido estático de un directorio
 (function () {
 	"use strict";
+	// Ahora requeimos más módulos propios de NodeJS
 	var http = require('http'),
 		url = require('url'),
 		path = require('path'),

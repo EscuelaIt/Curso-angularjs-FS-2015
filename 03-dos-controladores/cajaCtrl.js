@@ -1,3 +1,5 @@
+// Este controlador permanece igual
+// Sus variables no interfieren ni son visible para el otro
 (function () {
     var cajaCtrl = function () {
         var vm = this;
@@ -41,7 +43,6 @@
             return movimiento.esIngreso && 'Ingreso' || 'Gasto'
         }
     }
-    // Creación de un controlador en una sóla línea encadenando al get del módulo
     angular.module('controlCajaApp')
 		.controller('CajaCtrl', cajaCtrl);
 }());
