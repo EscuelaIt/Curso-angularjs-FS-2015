@@ -1,0 +1,26 @@
+<section name="Lista">
+    <p class="lead">Estos son tus movimientos recientes.</p>
+    <br>
+    <label class="control-label" for="importe">Filtrar:</label>
+    <input type="text" name="filtro" placeholder="qué buscas?" class="input" ng-model="valorBuscado">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><a href="" ng-click="campo = 'fecha'; sentido = campo == 'fecha' && !sentido">Fecha</a>
+                </th>
+                <th>Tipo</th>
+                <th>Categoría</th>
+                <th><a href="" ng-click="campo = 'importe'; sentido = campo == 'importe' && !sentido">Importe</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="movimiento in caja.movimientos | filter:valorBuscado | orderBy:campo:sentido">
+                <td class="text-left">{{movimiento.fecha | date}}</td>
+                <td class="text-left">{{movimiento.tipo}}</td>
+                <td class="text-left">{{movimiento.categoria}}</td>
+                <td class="text-left" ng-class="{'text-success': movimiento.tipo=='Ingreso', 'text-danger' : movimiento.tipo=='Gasto'}">{{movimiento.importe | number:2}} €</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

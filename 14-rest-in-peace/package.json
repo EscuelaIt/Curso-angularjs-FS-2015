@@ -1,0 +1,12 @@
+{
+  "name": "rest",
+  "version": "0.0.0",
+  "description": "rest nodejs angularjs",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "~1.0.2",
+    "express": "~4.1.2"
+  },
+  "author": "@albertobasalo",
+  "license": "BSD-2-Clause"
+}

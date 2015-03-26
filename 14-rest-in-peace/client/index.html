@@ -1,0 +1,44 @@
+<html lang="es" ng-app="controlCajaApp">
+<head>
+    <title>Control de Caja</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta lang="es" />
+    <meta name="description" content="Ejemplo Control de Caja en AngularJS por Alberto Basalo" />
+    <meta name="author" content="Alberto Basalo @ Ágora Binaria" />
+    <meta name="application-name" content="ControlAngularJS" />
+    <meta name="Keywords" content="AngularJS, ejemplo, tutorial, curso" />
+    <link rel="author" href="https://plus.google.com/+AlbertoBasalo71" />
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="MenuCtrl as menu">
+        <div class="navbar-inner">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{ active: menu.isActive('total') }">
+                        <a ui-sref="total">Totales</a>
+                    </li>
+                    <li ng-class="{ active: menu.isActive('nuevo') }">
+                        <a ui-sref="nuevo">Nuevo</a>
+                    </li>
+                    <li ng-class="{ active: menu.isActive('lista') }">
+                        <a ui-sref="lista">Lista</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container text-center" style="padding-top:50px;" ui-view >
+
+    </div>
+    <!-- JavaScript References -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+   <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+    <script src="app.js"></script>
+    <script src="menuCtrl.js"></script>
+    <script src="cajaCtrl.js"></script>
+    <script src="movimientosFactory.js"></script>
+</body>
+</html>
