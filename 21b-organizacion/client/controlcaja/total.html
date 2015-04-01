@@ -1,0 +1,34 @@
+<section name="total">
+	<ab-cabecera>Comprueba de dónde viene y a dónde va tu dinero.</ab-cabecera>
+	<div class="row-fluid">
+		<div class="row placeholders">
+			<div class="col-xs-8 col-sm-4 placeholder">
+				<h1>
+                    <span class="label label-success" name="ingresos">
+                        {{ caja.total.ingresos | number:2 }} €
+                    </span>
+                </h1>
+				<h4>Total ingresos</h4>
+				<span class="text-muted">Acumulado</span>
+			</div>
+			<div class="col-xs-8 col-sm-4 placeholder">
+				<h1>
+                    <span class="label label-danger" name="gastos">
+                        {{ caja.total.gastos | number:2 }} €
+                    </span>
+                </h1>
+				<h4>Total gastos</h4>
+				<span class="text-muted">Acumulado</span>
+			</div>
+			<div class="col-xs-8 col-sm-4 placeholder">
+				<h1>
+                    <span class="label " ng-class="{'label-success': caja.balance()>=0 , 'label-danger' : caja.balance()<0}" name="balance">
+                        {{ caja.balance() | number:2 }} €
+                    </span>
+                </h1>
+				<h4>Balance</h4>
+				<span class="text-muted">Ingresos-Gastos</span>
+			</div>
+		</div>
+	</div>
+</section>
