@@ -1,0 +1,28 @@
+<section name="Lista">
+	<ab-cabecera>Estos son tus movimientos recientes.</ab-cabecera>
+	<br>
+	<label class="control-label" for="importe">Filtrar:</label>
+	<input type="text" name="filtro" placeholder="qué buscas?" class="input" ng-model="valorBuscado">
+	<button class="btn-primary" ng-click="valorCorte=0">Ver todos los movimientos</button>
+	<button class="btn-danger" ng-click="valorCorte=1000">Sólo grandes movimientos</button>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th><a href="" ng-click="campo = 'fecha'; sentido = campo == 'fecha' && !sentido">Fecha</a>
+				</th>
+				<th>Tipo</th>
+				<th>Categoría</th>
+				<th><a href="" ng-click="campo = 'importe'; sentido = campo == 'importe' && !sentido">Importe</a>
+				</th>
+				<th>Valoración</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr 
+ 			ng-repeat="movimientoRepeater in caja.movimientos | abGranImporte:valorCorte | filter:valorBuscado | orderBy:campo:sentido" 
+            ab-fila-movimiento movimientodirectiva="movimientoRepeater"
+            ab-seleccionado >
+		</tbody>
+	</table>
+</section>

@@ -1,0 +1,10 @@
+<tr>
+	<td class="text-left"><a ui-sref="movimiento({_id:movimientoplantilla._id})">{{movimientoplantilla._id }}</a> </td>
+	<td class="text-left">{{movimientoplantilla.fecha | date}}</td>
+	<td class="text-left">{{movimientoplantilla.tipo}}</td>
+	<td class="text-left">{{movimientoplantilla.categoria}}</td>
+	<td class="text-left" ng-class="{'text-success': movimientoplantilla.tipo=='Ingreso', 'text-danger' : movimientoplantilla.tipo=='Gasto'}">
+		{{movimientoplantilla.importe | number:2}} €
+	</td>
+	<td class="text-left"><ab-valoracion valor="movimientoplantilla.valoracion" max="10" solo-lectura="true"></ab-valoracion></td>
+</tr>
