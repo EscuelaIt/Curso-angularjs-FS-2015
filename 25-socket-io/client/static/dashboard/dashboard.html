@@ -1,0 +1,31 @@
+<section name="total">
+	<ab-cabecera>Comprueba de dónde viene y a dónde va tu dinero.</ab-cabecera>
+	<div class="row-fluid">
+		<div class="row placeholders">
+			<div class="col-xs-8 col-sm-4 placeholder">
+				<h1>
+                    <span class="label label-info"  name="usuarios">
+                        {{ vm.total.usuarios | number:0 }} 
+                    </span>
+                </h1>
+				<h4>Usuarios</h4>
+			</div>
+			<div class="col-xs-8 col-sm-4 placeholder">
+				<h1>
+                    <span class="label label-success" name="ingresos">
+                        {{ vm.total.ingresos | number:2 }} €
+                    </span>
+                </h1>
+				<h4>Total ingresos</h4>
+			</div>
+			<div class="col-xs-8 col-sm-4 placeholder">
+				<h1>
+                    <span class="label label-danger" name="gastos">
+                        {{ vm.total.gastos | number:2 }} €
+                    </span>
+                </h1>
+				<h4>Total gastos</h4>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,17 @@
+{
+  "name": "ControlCashFlow",
+  "version": "0.0.0",
+  "description": "Controla tu flujo de caja",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alberto Basalo",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "body-parser": "~1.0.2",
+    "express": "~4.12.1",
+    "mongodb": "^2.0.26",
+    "q": "^1.2.0"
+  }
+}

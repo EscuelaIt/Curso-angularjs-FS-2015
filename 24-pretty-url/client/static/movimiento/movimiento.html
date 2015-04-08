@@ -1,0 +1,55 @@
+<section name="verMovimiento" class="row-fluid">
+	<form class="form-horizontal text-left">
+		<fieldset>
+			<div id="legend">
+				<legend class="">Ver el movimiento {{ vm.movimiento.id}} </legend>
+			</div>
+			<div class="row-fluid">
+				<div class="col-xs-12 col-sm-6">
+					<div class="control-group">
+						<label class="control-label" for="tipo">Tipo</label>
+						<div class="controls">
+							<div class="btn-group">
+								{{ vm.movimiento.tipo}}
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="categ">Categoría</label>
+						<div class="controls">
+							{{ vm.movimiento.categoria }}
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6">
+					<div class="control-group">
+						<label class="control-label" for="fecha">Fecha</label>
+						<div class="controls">
+							{{ vm.movimiento.fecha || date }}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="importe">Importe</label>
+						<div class="controls">
+							{{ vm.movimiento.importe }}
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6">
+					<div class="control-group">
+						<label class="control-label" for="texto">Texto</label>
+						<div class="controls">
+							{{ vm.movimiento.texto | abRellenarVacios | abRecortar | abLimpiarCadena }}
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="valoracion">Valoración</label>
+						<div class="controls">
+							<span ab-valoracion valor="caja.nuevoMovimiento.valoracion" max="10" solo-lectura="false"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</section>

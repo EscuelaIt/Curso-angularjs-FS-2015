@@ -1,0 +1,66 @@
+<html lang="es" ng-app="controlCajaApp">
+
+<head>
+    <meta charset="utf-8" />
+    <meta lang="es" />
+    <base href="/">
+    <meta name="fragment" content="!">
+    <title>Control de Caja</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="description" content="Ejemplo Control de Caja en AngularJS por Alberto Basalo" />
+    <meta name="author" content="Alberto Basalo @ Ágora Binaria" />
+    <meta name="application-name" content="ControlAngularJS" />
+    <meta name="Keywords" content="AngularJS, ejemplo, tutorial, curso" />
+    <link rel="author" href="https://plus.google.com/+AlbertoBasalo71" />
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" name="navbar" role="navigation" ng-controller="MenuCtrl as menu">
+        <div class="navbar-inner">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{ active: menu.isActive('total') }">
+                        <a ui-sref="total" name="menu-total">Totales</a>
+                    </li>
+                    <li ng-class="{ active: menu.isActive('nuevo') }">
+                        <a ui-sref="nuevo" name="menu-nuevo">Nuevo</a>
+                    </li>
+                    <li ng-class="{ active: menu.isActive('lista') }">
+                        <a ui-sref="lista" name="menu-lista">Lista</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container text-center" style="padding-top:50px;" ui-view>
+
+    </div>
+    <ab-pie-pagina></ab-pie-pagina>
+    <!-- JavaScript References -->
+    <!--    la referencia a socket.io la emite el propio servidor-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-cookies.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-resource.min.js"></script>
+    <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+    <script src="static/_comun/app.js"></script>
+    <script src="static/_comun/appHttpLog.js"></script>
+    <script src="static/_comun/appSecurity.js"></script>
+    <script src="static/_comun/menuCtrl.js"></script>
+    <!--    Referencia a la socket factory -->
+    <script src="static/_comun/socketFactory.js"></script>
+    <script src="static/registro/registroCtrl.js"></script>
+    <script src="static/controlcaja/cajaCtrl.js"></script>
+    <script src="static/movimiento/movimientoCtrl.js"></script>
+    <!--    Referencia al nuevo controlador para el dashboard-->
+    <script src="static/dashboard/dashboardCtrl.js"></script>
+    <script src="static/data/movimientosFactory.js"></script>
+    <script src="static/data/maestrosFactory.js"></script>
+    <script src="static/filtros/filtros.js"></script>
+    <script src="static/directivas/directivas.js"></script>
+    <script src="static/directivas/valoracion/valoracion.js"></script>
+</body>
+
+</html>
